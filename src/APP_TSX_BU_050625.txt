@@ -1,0 +1,918 @@
+import { useEffect, useRef, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { getDistanceInMiles } from "./utils";
+import titleBg from './assets/title_image.png'; // adjust path if necessary
+import houseIconImage from './assets/house_icon.png'; // Adjust path as needed
+import hospitalIconImage from './assets/hospital_icon.png';
+
+
+const houseIcon = new L.Icon({
+  iconUrl: houseIconImage,
+  iconSize: [60, 60],         // Size of the icon
+  iconAnchor: [15, 30],       // Point of the icon which corresponds to the marker's location
+  popupAnchor: [0, -30],      // Point from which the popup opens relative to the iconAnchor
+});
+
+const hospitalIcon = new L.Icon({
+  iconUrl: houseIconImage,
+  iconSize: [60, 60],         // Size of the icon
+  iconAnchor: [15, 30],       // Point of the icon which corresponds to the marker's location
+  popupAnchor: [0, -30],      // Point from which the popup opens relative to the iconAnchor
+});
+
+
+const defaultIcon = new L.Icon.Default();
+
+
+
+const poiIcons: Record<string, L.Icon> = {
+  school: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/1670/1670048.png", iconSize: [16, 16] }),
+  university: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190411.png", iconSize: [16, 16] }),
+  restaurant: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/3480/3480350.png", iconSize: [7, 7] }),
+  cafe: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/3480/3480307.png", iconSize: [16, 16]}),
+  gym: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", iconSize: [16, 16] }),
+  park: new L.Icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/427/427735.png", iconSize: [7, 7] }),
+};
+
+
+function MapBoundsSetter({ bounds }: { bounds: [[number, number], [number, number]] }) {
+  const map = useMap();
+  useEffect(() => {
+    map.fitBounds(bounds);
+  }, [bounds, map]);
+  return null;
+}
+
+function toTitleCase(str: string): string {
+  return str
+    .replace(/_/g, " ")                    // replace underscores
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase()); // capitalize first letter of each word
+}
+
+
+import { useMapEvents } from "react-leaflet";
+
+function MapEventHandler({ onBoundsChange }: { onBoundsChange: (bounds: [[number, number], [number, number]]) => void }) {
+  useMapEvents({
+    moveend: (e) => {
+      const map = e.target;
+      const bounds = map.getBounds();
+      const newBounds: [[number, number], [number, number]] = [
+        [bounds.getSouth(), bounds.getWest()],
+        [bounds.getNorth(), bounds.getEast()],
+      ];
+      onBoundsChange(newBounds);
+    },
+  });
+  return null;
+}
+
+
+
+
+function App() {
+  const [searchInput, setSearchInput] = useState("");
+  const [bounds, setBounds] = useState<[[number, number], [number, number]] | null>(null);
+  const [realEstateListings, setRealEstateListings] = useState<any[]>([]);
+  const [poiFilters, setPoiFilters] = useState<Record<string, number>>({});
+  const [selectedPOITypes, setSelectedPOITypes] = useState<string[]>([]);
+  const [selectedPOIBrands, setSelectedPOIBrands] = useState<Record<string, string[]>>({});
+  const [pois, setPOIs] = useState<any[]>([]);
+  const [availablePOITypes, setAvailablePOITypes] = useState<string[]>([]);
+  const [showDeeperDive, setShowDeeperDive] = useState(false);
+  const [showPOIs, setShowPOIs] = useState(false);
+  const [filterMode, setFilterMode] = useState<"AND" | "OR">("AND");
+  const [minPrice, setMinPrice] = useState<number | "">("");
+const [maxPrice, setMaxPrice] = useState<number | "">("");
+const [minBedrooms, setMinBedrooms] = useState<number | "">("");
+const [minBathrooms, setMinBathrooms] = useState<number | "">("");
+const markerRefs = useRef<Record<string, L.Marker>>( {});
+const [isLoading, setIsLoading] = useState(false);
+const [isUserPan, setIsUserPan] = useState(true);
+const [showPropertyFilters, setShowPropertyFilters] = useState(false);
+const [showPOIFilters, setShowPOIFilters] = useState(false);
+const [negativePoiFilters, setNegativePoiFilters] = useState<Record<string, number>>({});
+const [selectedNegativePOITypes, setSelectedNegativePOITypes] = useState<string[]>([]);
+const [selectedNegativePOIBrands, setSelectedNegativePOIBrands] = useState<Record<string, string[]>>({});
+const [showPositiveFilters, setShowPositiveFilters] = useState(false);
+const [showNegativeFilters, setShowNegativeFilters] = useState(false);
+
+
+
+
+
+
+useEffect(() => {
+  if (!mapRef.current) return;
+
+  const map = mapRef.current;
+
+  const handleMoveEnd = () => {
+    const bounds = map.getBounds();
+    const newBounds: [[number, number], [number, number]] = [
+      [bounds.getSouth(), bounds.getWest()],
+      [bounds.getNorth(), bounds.getEast()]
+    ];
+
+    setBounds(newBounds); // update bounds state
+
+    // Refetch data for new bounds
+    fetchRealPOIs(newBounds);
+    fetchATTOMListings(newBounds); // or fetch real listings if available
+  };
+
+  map.on("moveend", handleMoveEnd);
+
+  return () => {
+    map.off("moveend", handleMoveEnd);
+  };
+}, []);
+
+
+
+const mapRef = useRef<L.Map | null>(null);
+
+useEffect(() => {
+  if (!mapRef.current) return;
+  useEffect(() => {
+  if (!bounds) return;
+
+  fetchATTOMListings(bounds);
+  fetchRealPOIs(bounds);
+}, [bounds]);
+
+
+  const map = mapRef.current;
+
+const handleMoveEnd = () => {
+  const bounds = map.getBounds();
+  const newBounds: [[number, number], [number, number]] = [
+    [bounds.getSouth(), bounds.getWest()],
+    [bounds.getNorth(), bounds.getEast()],
+  ];
+
+  setBounds(newBounds);
+  setIsLoading(true);
+
+  Promise.all([
+    fetchRealPOIs(newBounds),
+    fetchATTOMListings(newBounds),
+  ]).then(() => {
+    setIsLoading(false);
+  });
+};
+
+
+  map.on("moveend", handleMoveEnd);
+
+  return () => {
+    map.off("moveend", handleMoveEnd);
+  };
+}, []);
+
+
+const handleSearch = async () => {
+  if (!searchInput) return;
+
+  const apiKey = "b69aca2b8ba84e73ab9492729e6eb558";
+  const response = await fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(searchInput)}&key=${apiKey}&countrycode=US`
+  );
+  const data = await response.json();
+
+  if (data.results && data.results.length > 0) {
+    const result = data.results[0];
+    const geometry = result.geometry;
+
+    let boundingBox: [[number, number], [number, number]];
+    if (!result.bounds) {
+      const delta = 0.05;
+      boundingBox = [
+        [geometry.lat - delta, geometry.lng - delta],
+        [geometry.lat + delta, geometry.lng + delta],
+      ];
+    } else {
+      const bounds = result.bounds;
+      boundingBox = [
+        [bounds.southwest.lat, bounds.southwest.lng],
+        [bounds.northeast.lat, bounds.northeast.lng],
+      ];
+    }
+
+    setIsUserPan(false); // Prevent MapEventHandler from triggering
+    setBounds(boundingBox);
+    fetchATTOMListings(boundingBox); // or fetchBridgeListings if using real API
+    fetchRealPOIs(boundingBox);
+    setShowDeeperDive(true);
+
+    // Allow map to resume handling user pan
+    setTimeout(() => setIsUserPan(true), 500);
+  } else {
+    alert("Location not found");
+  }
+};
+const fetchATTOMListings = async (bounds: [[number, number], [number, number]]) => {
+  const [southWest, northEast] = bounds;
+  const [south, west] = southWest;
+  const [north, east] = northEast;
+
+  // Calculate center point
+  const latitude = (south + north) / 2;
+  const longitude = (west + east) / 2;
+
+  // Calculate approximate radius in miles
+  const latDiff = north - south;
+  const lngDiff = east - west;
+  const radius = Math.max(latDiff, lngDiff) * 69 / 2; // Approximate conversion: 1 degree ≈ 69 miles
+
+  const url = `https://api.gateway.attomdata.com/propertyapi/v1.0.0/attomavm/detail?latitude=${latitude}&longitude=${longitude}&radius=${radius}`;
+  
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        apikey: 'a4305c9c25bbde33b48fb2a778d63d11',
+        accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const listings = data.property?.map((item: any, i: number) => ({
+  id: item.identifier?.obPropId || i,
+  name: item.propType || `Property Listing ${i + 1}`,
+  address: [
+    item.address?.oneLine,
+  ].filter(Boolean).join(", "),
+  price: item.sale?.amount?.saleamt
+    ? `$${item.sale.amount.saleamt.toLocaleString()}`
+    : item.avm?.amount?.value
+    ? `$${item.avm.amount.value.toLocaleString()} (est.)`
+    : "Price not available",
+  yearbuilt: item.building?.summary?.yearbuilt ?? 0,
+  coordinates: [item.location?.latitude, item.location?.longitude],
+  bedrooms: item.building?.rooms?.beds ?? 0,
+  bathrooms: item.building?.rooms?.bathstotal ?? 0,
+  totalRooms: item.building?.rooms?.roomsTotal ?? 0,
+  image: `https://loremflickr.com/400/300/house?lock=${i}`
+, // 👈 Mock image
+}));
+
+
+    setRealEstateListings(listings);
+  } catch (err) {
+    console.error("Failed to fetch ATTOM listings:", err);
+  }
+};
+
+
+
+
+
+  const fetchRealPOIs = async (bounds: [[number, number], [number, number]]) => {
+    const [southWest, northEast] = bounds;
+    const [south, west] = southWest;
+    const [north, east] = northEast;
+
+
+
+const query = `
+[out:json][timeout:25];
+(
+  node["emergency"="fire_station"](${south},${west},${north},${east});
+  node["amenity"="police"](${south},${west},${north},${east});
+  node["amenity"="hospital"](${south},${west},${north},${east});
+  node["amenity"="restaurant"](${south},${west},${north},${east});
+  node["amenity"="cafe"](${south},${west},${north},${east});
+  node["amenity"="bank"](${south},${west},${north},${east});
+  node["amenity"="pharmacy"](${south},${west},${north},${east});
+  node["amenity"="library"](${south},${west},${north},${east});
+  node["healthcare"="hospital"](${south},${west},${north},${east});
+  node["healthcare"="clinic"](${south},${west},${north},${east});
+  node["amenity"="bar"](${south},${west},${north},${east});
+  node["amenity"="pub"](${south},${west},${north},${east});
+  node["amenity"="post_office"](${south},${west},${north},${east});
+  node["railway"="subway_entrance"](${south},${west},${north},${east});
+  node["aeroway"="aerodrome"](${south},${west},${north},${east});
+  node["highway"="bus_stop"](${south},${west},${north},${east});
+  node["leisure"="park"](${south},${west},${north},${east});
+  node["leisure"="playground"](${south},${west},${north},${east});
+  node["leisure"="stadium"](${south},${west},${north},${east});
+  node["amenity"="school"](${south},${west},${north},${east});
+  node["shop"="supermarket"](${south},${west},${north},${east});
+  node["shop"="mall"](${south},${west},${north},${east});
+  node["power"="line"](${south},${west},${north},${east});
+  node["amenity"="college"](${south},${west},${north},${east});
+  node["amenity"="university"](${south},${west},${north},${east});
+  node["amenity"="place_of_worship"](${south},${west},${north},${east});
+  node["man_made"="mast"]["tower:type"="communication"](${south},${west},${north},${east});
+  node["man_made"="tower"]["communication:mobile_phone"="yes"](${south},${west},${north},${east});
+  node["power"="plant"](${south},${west},${north},${east});
+  node["information"="trailhead"](${south},${west},${north},${east});
+);
+out body;
+`;
+
+
+
+const response = await fetch(
+      `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`
+    );
+    const data = await response.json();
+
+const pois = data.elements.map((element: any) => {
+  const tags = element.tags || {};
+
+  const tagEntry = Object.entries(tags).find(
+    ([key, value]) =>
+      value &&
+      ["amenity", "shop", "tourism", "leisure", "office", "craft", "healthcare", "man_made", "power", "information", "emergency", "transport"].includes(key)
+  );
+
+  const type = tagEntry
+    ? toTitleCase(tagEntry[1].replace(/_/g, " "))
+    : "Unknown";
+
+  return {
+    id: element.id,
+    name: toTitleCase(tags.name || tagEntry?.[1] || "Unnamed"),
+    brand: tags.name?.toLowerCase() ?? "",
+    type,
+    coordinates: [element.lat, element.lon],
+  };
+});
+
+console.log("Parsed POIs (sample):", pois.slice(0, 10));
+console.log("All POI Types Found:", [...new Set(pois.map(p => p.type))]);
+
+
+const positiveTypes = new Set([
+  "School", "University", "College", "Park", "Playground", "Library",
+  "Restaurant", "Cafe", "Bank", "Pharmacy", "Bar", "Pub", "Supermarket", "Mall", "Bus Stop","Subway_Entrance"
+]);
+
+const negativeTypes = new Set([
+  "Aerodrome", "Plant", "line", "Mast", "Tower"
+]);
+
+const poiCountByType: Record<string, number> = {};
+pois.forEach((poi) => {
+  poiCountByType[poi.type] = (poiCountByType[poi.type] || 0) + 1;
+});
+
+const positivePOITypes = Object.entries(poiCountByType)
+  .filter(([type]) => positiveTypes.has(type))
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 25)
+  .map(([type]) => type);
+
+const negativePOITypes = Object.entries(poiCountByType)
+  .filter(([type]) => negativeTypes.has(type))
+  .map(([type]) => type);
+
+// Now filter POIs that match either group
+const topPOIs = pois.filter((poi) =>
+  positivePOITypes.includes(poi.type) || negativePOITypes.includes(poi.type)
+);
+
+setPOIs(topPOIs);
+setAvailablePOITypes(positivePOITypes);
+
+const posFilters: Record<string, number> = {};
+const negFilters: Record<string, number> = {};
+
+positivePOITypes.forEach((type) => {
+  posFilters[type] = 1;
+});
+negativePOITypes.forEach((type) => {
+  negFilters[type] = 1;
+});
+
+setPoiFilters(posFilters);
+setNegativePoiFilters(negFilters);
+
+
+
+
+setPOIs(pois);
+  };
+  
+  
+
+const filteredListings = realEstateListings.filter((listing) => {
+  // Apply property filters first
+  const priceValue = Number(listing.price.replace(/[^0-9]/g, ""));
+  const passesPrice =
+    (minPrice === "" || priceValue >= minPrice) &&
+    (maxPrice === "" || priceValue <= maxPrice);
+  const passesBedrooms =
+    minBedrooms === "" || listing.bedrooms >= minBedrooms;
+  const passesBathrooms =
+    minBathrooms === "" || listing.bathrooms >= minBathrooms;
+
+  if (!passesPrice || !passesBedrooms || !passesBathrooms) return false;
+
+  // Then apply POI proximity filters
+  if (selectedPOITypes.length === 0) return false;
+
+  const listingMatchesPOI = (type: string) => {
+    const maxDistance = poiFilters[type];
+    if (!maxDistance || maxDistance <= 0) return false;
+
+    const relevantPOIs = pois.filter((poi) => poi.type === type);
+    const brandFilters = selectedPOIBrands[type];
+    const filteredPOIs = brandFilters?.length
+      ? relevantPOIs.filter((poi) => poi.brand && brandFilters.includes(poi.brand))
+      : relevantPOIs;
+
+    return filteredPOIs.some((poi) => {
+      const distance = getDistanceInMiles(listing.coordinates, poi.coordinates);
+      return distance > 0 && distance <= maxDistance;
+    });
+
+
+  };
+
+  return filterMode === "AND"
+    ? selectedPOITypes.every(listingMatchesPOI)
+    : selectedPOITypes.some(listingMatchesPOI);
+});
+
+
+  const listingsToDisplay = showDeeperDive ? filteredListings : [];
+
+  const handlePOITypeToggle = (type: string) => {
+    setSelectedPOITypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+    );
+  };
+
+return (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      height: "100vh",
+      backgroundColor: "#FFFFFF",
+      fontFamily: "Calibri, sans-serif",
+    }}
+  >
+    {/* Top bar with filters and search */}
+   <div
+  style={{
+    padding: "5px",
+    backgroundColor: "#003153",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    color: "#FFFFFF",
+    boxShadow: "0 px 4px rgba(0,0,0,0.1)",
+    zIndex: 1000,
+	position: "relative",
+  }}
+    >
+	<h1 style={{ fontSize: "34px", marginBottom: "10px" }}>Location Is Everything</h1>
+   <h1 style={{ fontSize: "16px", marginBottom: "10px" }}>Where Do You Want to Look for Properties?</h1>
+     {/* 👇 Company label in top-right corner */}
+  <span
+    style={{
+      position: "absolute",
+      top: "10px",
+      right: "12px",
+      fontSize: "12px",
+      fontStyle: "italic",
+      color: "#CCCCCC",
+    }}
+  >
+    The Location Is Everything Company
+  </span>
+      <input
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
+        placeholder="Enter ZIP, city, county, or state"
+        style={{ width: "300px", marginRight: "10px" }}
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+	
+	{isLoading && (
+  <div style={{
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "rgba(0,0,0,0.7)",
+    color: "white",
+    padding: "8px 16px",
+    borderRadius: "5px",
+    zIndex: 1001
+  }}>
+    Updating map data...
+  </div>
+)}
+
+
+    {/* Main layout with side filters, map, and results */}
+    <div style={{ flex: 1, display: "flex" }}>
+      {/* Left: POI Filters */}
+      {showDeeperDive && (
+        <div style={{
+  width: "300px",
+  padding: "10px",
+  backgroundColor: "#f4f6f8",
+  overflowY: "auto",
+  height: "100vh",             // Make it scrollable across full view height
+  boxSizing: "border-box"      // Prevent overflow caused by padding
+}}>
+
+          <h4>STANDARD PROPERTY SEARCH</h4>
+		   <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "20px" }}>
+        <input
+          type="number"
+          placeholder="Min Price"
+          value={minPrice}
+          onChange={(e) => setMinPrice(Number(e.target.value) || "")}
+          style={{ width: "100px" }}
+        />
+        <input
+          type="number"
+          placeholder="Max Price"
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(Number(e.target.value) || "")}
+          style={{ width: "100px" }}
+        />
+        <input
+          type="number"
+          placeholder="Min Bedrooms"
+          value={minBedrooms}
+          onChange={(e) => setMinBedrooms(Number(e.target.value) || "")}
+          style={{ width: "120px" }}
+        />
+        <input
+          type="number"
+          placeholder="Min Bathrooms"
+          value={minBathrooms}
+          onChange={(e) => setMinBathrooms(Number(e.target.value) || "")}
+          style={{ width: "120px" }}
+        />
+      </div>
+{/* ➕ Positive POIs Section */}
+<div style={{ marginBottom: "15px" }}>
+  <button
+    onClick={() => setShowPositiveFilters(!showPositiveFilters)}
+    style={{ width: "100%", padding: "8px", backgroundColor: "#1E4B7A", color: "white", border: "none", borderRadius: "4px" }}
+  >
+    {showPositiveFilters ? "▼" : "▶"} POIs You Want To Live Near
+  </button>
+
+  {showPositiveFilters && (
+    <div style={{ marginTop: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
+      {Object.keys(poiFilters).map((type) => (
+        <div key={type} style={{ backgroundColor: "#e8f0fe", padding: "8px", borderRadius: "5px" }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={selectedPOITypes.includes(type)}
+              onChange={() =>
+                setSelectedPOITypes((prev) =>
+                  prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+                )
+              }
+              style={{ marginRight: "5px" }}
+            />
+            {type}
+          </label>
+
+          {selectedPOITypes.includes(type) && (
+            <>
+              <input
+  type="number"
+  placeholder="Miles"
+  title="Show properties within this distance from the POI type"
+                value={poiFilters[type] ?? ""}
+                onChange={(e) =>
+                  setPoiFilters((prev) => ({
+                    ...prev,
+                    [type]: Number(e.target.value),
+                  }))
+                }
+                style={{ width: "60px", marginTop: "5px" }}
+              />
+              {/* Brand Filtering */}
+              <div style={{ marginTop: "5px" }}>
+                <label style={{ fontWeight: "bold" }}>POI Names:</label>
+                <div style={{ maxHeight: "100px", overflowY: "auto", backgroundColor: "#f5f5f5", padding: "5px", borderRadius: "5px" }}>
+                  {Array.from(
+                    new Set(
+                      pois.filter((poi) => poi.type === type && poi.brand).map((poi) => poi.brand)
+                    )
+                  )
+                    .sort()
+                    .map((brand) => (
+                      <div key={brand}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={selectedPOIBrands[type]?.includes(brand) || false}
+                            onChange={() => {
+                              setSelectedPOIBrands((prev) => {
+                                const prevList = prev[type] || [];
+                                const newList = prevList.includes(brand)
+                                  ? prevList.filter((b) => b !== brand)
+                                  : [...prevList, brand];
+                                return { ...prev, [type]: newList };
+                              });
+                            }}
+                            style={{ marginRight: "5px" }}
+                          />
+                          {toTitleCase(brand)}
+                        </label>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+{/* ➖ Negative POIs Section */}
+<div>
+  <button
+    onClick={() => setShowNegativeFilters(!showNegativeFilters)}
+    style={{ width: "100%", padding: "8px", backgroundColor: "#7a1e1e", color: "white", border: "none", borderRadius: "4px" }}
+  >
+    {showNegativeFilters ? "▼" : "▶"} POIs You Want To Avoid
+  </button>
+
+  {showNegativeFilters && (
+    <div style={{ marginTop: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
+      {Object.keys(negativePoiFilters).map((type) => (
+        <div key={type} style={{ backgroundColor: "#fdecea", padding: "8px", borderRadius: "5px" }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={selectedNegativePOITypes.includes(type)}
+              onChange={() =>
+                setSelectedNegativePOITypes((prev) =>
+                  prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+                )
+              }
+              style={{ marginRight: "5px" }}
+            />
+            {type}
+          </label>
+
+          {selectedNegativePOITypes.includes(type) && (
+            <>
+              <input
+  type="number"
+  placeholder="Min Distance"
+  title="Exclude properties within this distance from the POI type"
+                value={negativePoiFilters[type] ?? ""}
+                onChange={(e) =>
+                  setNegativePoiFilters((prev) => ({
+                    ...prev,
+                    [type]: Number(e.target.value),
+                  }))
+                }
+                style={{ width: "100px", marginTop: "5px" }}
+              />
+              {/* Brand Filtering */}
+              <div style={{ marginTop: "5px" }}>
+                <label style={{ fontWeight: "bold" }}>POI Names:</label>
+                <div style={{ maxHeight: "100px", overflowY: "auto", backgroundColor: "#fce4e4", padding: "5px", borderRadius: "5px" }}>
+                  {Array.from(
+                    new Set(
+                      pois.filter((poi) => poi.type === type && poi.brand).map((poi) => poi.brand)
+                    )
+                  )
+                    .sort()
+                    .map((brand) => (
+                      <div key={brand}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={selectedNegativePOIBrands[type]?.includes(brand) || false}
+                            onChange={() => {
+                              setSelectedNegativePOIBrands((prev) => {
+                                const prevList = prev[type] || [];
+                                const newList = prevList.includes(brand)
+                                  ? prevList.filter((b) => b !== brand)
+                                  : [...prevList, brand];
+                                return { ...prev, [type]: newList };
+                              });
+                            }}
+                            style={{ marginRight: "5px" }}
+                          />
+                          {toTitleCase(brand)}
+                        </label>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+
+          <div style={{ marginTop: "10px" }}>
+            <label>
+              Filter mode:
+              <select
+                value={filterMode}
+                onChange={(e) => setFilterMode(e.target.value as "AND" | "OR")}
+                style={{ marginLeft: "5px" }}
+              >
+                <option value="AND">AND (match all)</option>
+                <option value="OR">OR (match any)</option>
+              </select>
+            </label>
+          </div>
+
+          <div style={{ marginTop: "10px" }}>
+            <label>
+              <input
+                type="checkbox"
+                checked={showPOIs}
+                onChange={() => setShowPOIs((prev) => !prev)}
+                style={{ marginRight: "5px" }}
+              />
+              Show POIs on map
+            </label>
+          </div>
+        </div>
+      )}
+
+ {/* Center: Map */}
+<div style={{ flex: 1 }}>
+  <MapContainer
+    center={[37.0902, -95.7129]}
+    zoom={4}
+    style={{ height: "100%" }}
+    whenCreated={(map) => (mapRef.current = map)}
+  >
+    <TileLayer
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    />
+	
+	{bounds && <MapBoundsSetter bounds={bounds} />}
+
+
+  <MapEventHandler
+  onBoundsChange={(newBounds) => {
+    if (!isUserPan) return;
+    setBounds(newBounds);
+    fetchRealPOIs(newBounds);
+    fetchATTOMListings(newBounds);
+	
+	if (!showDeeperDive) {
+  setShowDeeperDive(true);
+}
+
+  }}
+/>
+
+
+    {listingsToDisplay.map((listing) => (
+      <Marker
+  key={listing.id}
+  position={listing.coordinates}
+  icon={houseIcon}
+  ref={(el) => {
+    if (el) {
+      markerRefs.current[listing.id] = el;
+    }
+  }}
+>
+       <Popup>
+  <div>
+   <p>
+  {listing.bedrooms} BR / {listing.bathrooms} BA
+</p>
+{listing.totalRooms > 0 && (
+  <p>Total Rooms: {listing.totalRooms}</p>
+)}
+
+    {listing.sqft && <p>{listing.sqft.toLocaleString()} sq ft</p>}
+  </div>
+</Popup>
+
+      </Marker>
+    ))}
+
+    {showPOIs &&
+      pois.map((poi) => (
+        <Marker key={poi.id} position={poi.coordinates} icon={poiIcons[poi.type] || defaultIcon}>
+          <Popup>
+            <div>
+              <h4>{poi.name}</h4>
+              <p>Type: {poi.type}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+  </MapContainer>
+</div>
+
+
+      {/* Right: Property Results */}
+      {listingsToDisplay.length > 0 && (
+<div style={{
+  width: "300px",
+  padding: "10px",
+  backgroundColor: "#fff",
+  borderLeft: "1px solid #ccc",
+  height: "100vh",             // Full height scroll
+  overflowY: "auto",
+  boxSizing: "border-box"
+}}>
+
+          <h4>MATCHING PROPERTIES</h4>
+          {listingsToDisplay.map((listing) => (
+<div
+  key={listing.id}
+  style={{
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "8px",
+    marginBottom: "10px",
+    backgroundColor: "#1E4B7A",
+    color: "white",
+    cursor: "pointer",
+  }}
+  onClick={() => {
+    const marker = markerRefs.current[listing.id];
+    if (marker) {
+      marker.openPopup();
+    }
+    if (
+      mapRef.current &&
+      Array.isArray(listing.coordinates) &&
+      typeof listing.coordinates[0] === "number" &&
+      typeof listing.coordinates[1] === "number"
+    ) {
+      mapRef.current.flyTo(listing.coordinates, 16, {
+        duration: 1.5,
+        easeLinearity: 0.25,
+      });
+    }
+  }}
+>
+  {/* Mock image */}
+  {listing.image && (
+    <img
+      src={listing.image}
+      alt={listing.name}
+      style={{
+        width: "100%",
+        height: "160px",
+        objectFit: "cover",
+        borderRadius: "6px",
+        marginBottom: "8px"
+      }}
+    />
+  )}
+
+  {/* Listing details */}
+  <h4>{listing.name || "Unnamed Property"}</h4>
+  {listing.address && <p>{listing.address}</p>}
+  {listing.price && <p>Price: {listing.price}</p>}
+<p>
+  {listing.bedrooms} BR / {listing.bathrooms} BA
+</p>
+{listing.totalRooms > 0 && (
+  <p>Total Rooms: {listing.totalRooms}</p>
+)}
+
+  {listing.sqft && <p>{listing.sqft.toLocaleString()} sq ft</p>}
+</div>
+
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+}
+export default App;
