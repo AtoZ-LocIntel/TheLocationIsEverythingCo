@@ -15,7 +15,7 @@ export default function Home() {
 
 			
 			<p className="text-2xl text-gray-600 italic mb-4">
-  Stay Tuned in Later 2025 for a New Way of Getting Location Intelligence.....
+  Stay Tuned in Later 2025 for a New Way of Getting Location Intelligence
 </p>
 <p className="text-lg italic text-red-600">
   
