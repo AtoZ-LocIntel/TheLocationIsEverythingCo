@@ -30,10 +30,11 @@ export default function Home() {
       <div className="bg-gray-900 rounded-2xl p-6 max-w-2xl w-full shadow-md text-center border border-gray-800">
         <h2 className="text-2xl font-semibold mb-2 text-white">Why Choose Us?</h2>
         <p className="text-base md:text-lg text-gray-200">
-          After 25 years working with location data and tools, we know the drill: Bloated software, never-ending installs, constant license headaches, and a price tag that makes your accountant weep.
+          After 25 years working with location data and software, we know the drill: Bloated software, never-ending installs, constant license headaches, and a price tag that makes your accountant weep.
           <br /><br />
           We believe there’s a better way. At The Location Is Everything Company, we cut out the clutter—and the cost. <br />
           No bloat, no vendor lock-in. Just the right insights, at the right time, with the right data. All on your terms.
+		  We integrate your data with open source software and data to provide affordable Location Intelligence.
         </p>
       </div>
     </main>
