@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Image from 'next/image';
-import { FaChartBar, FaLightbulb, FaTimes } from 'react-icons/fa';
+import { FaChartBar, FaTimes } from 'react-icons/fa';
 import { Nunito_Sans, Barlow_Condensed } from 'next/font/google';
 
 const nunito = Nunito_Sans({
@@ -23,12 +23,15 @@ export default function Home() {
   return (
     <div className={`relative h-screen w-full overflow-hidden ${nunito.className}`}>
       {/* Background image */}
-      <img
-        src="/title_image.png"
-        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none z-0"
-        alt=""
-        aria-hidden="true"
-      />
+<Image
+  src="/title_image.png"
+  alt=""
+  fill
+  sizes="100vw"
+  className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none z-0"
+  priority
+  aria-hidden="true"
+/>
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-950 opacity-35 z-10" />
 
       {/* Offerings Modal */}
