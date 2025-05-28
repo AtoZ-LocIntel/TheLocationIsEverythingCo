@@ -70,9 +70,9 @@ export default function Home() {
 <Image
   src="/logo.png"
   alt="Location Is Everything"
-  width={40}
-  height={40}
-  className="w-10 h-10 border-2 border-black rounded-full bg-white mr-2"
+  width={50}
+  height={50}
+  className="w-20 h-20 border-2 border-black rounded-full bg-white mr-2"
   priority
 />
 
@@ -110,7 +110,7 @@ export default function Home() {
   alt="Location Is Everything Logo"
   width={56}
   height={56}
-  className="w-14 h-14 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
+  className="w-18 h-18 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
 />
 
           <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline drop-shadow-lg">
