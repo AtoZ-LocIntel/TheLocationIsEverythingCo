@@ -67,14 +67,14 @@ export default function Home() {
       {/* NavBar - Fixed Top */}
       <header className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-3 bg-black/70 shadow-lg z-30">
  <div className="flex items-center gap-2">
-  <Image
-    src="/logo.png"
-    alt="Location Is Everything"
-    width={40}
-    height={40}
-    className="w-10 h-10 border-2 border-black rounded-full bg-white mr-2"
-    priority
-  />
+<Image
+  src="/logo.png"
+  alt="Location Is Everything"
+  width={40}
+  height={40}
+  className="hidden md:inline w-10 h-10 border-2 border-black rounded-full bg-white mr-2"
+  priority
+/>
   <span className="hidden md:inline text-base italic text-white drop-shadow-lg">
     Location Is Everything
   </span>
