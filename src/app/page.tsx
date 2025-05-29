@@ -66,18 +66,20 @@ export default function Home() {
 
       {/* NavBar - Fixed Top */}
       <header className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-3 bg-black/70 shadow-lg z-30">
-   <div className="flex items-center gap-2">
-<Image
-  src="/logo.png"
-  alt="Location Is Everything"
-  width={50}
-  height={50}
-  className="w-20 h-20 border-2 border-black rounded-full bg-white mr-2"
-  priority
-/>
-
-  <span className="text-base italic text-white drop-shadow-lg">Location Is Everything</span>
+ <div className="flex items-center gap-2">
+  <Image
+    src="/logo.png"
+    alt="Location Is Everything"
+    width={40}
+    height={40}
+    className="w-10 h-10 border-2 border-black rounded-full bg-white mr-2"
+    priority
+  />
+  <span className="hidden md:inline text-base italic text-white drop-shadow-lg">
+    Location Is Everything
+  </span>
 </div>
+
         <nav className="flex gap-8 items-center">
           <button
             onClick={() => setShowOfferings(true)}
@@ -113,10 +115,11 @@ export default function Home() {
   className="w-18 h-18 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
 />
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline drop-shadow-lg">
+  <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline-black drop-shadow-lg">
   Why Choose Us?
 </h2>
-<p className="text-lg md:text-xl black-outline max-w-2xl mx-auto drop-shadow-lg font-bold">
+
+<p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
   With over two decades delivering geospatial solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, public safety, infrastructure, and startups—our approach is grounded in real-world impact.
   <br /><br />
   We know the challenges first-hand: costly tools, bloated software, and the frustration of paying for capabilities you don’t need. That’s why we created The Location Is Everything Company—to bring you only the location intelligence that delivers value, without the headaches of licensing, lock-in, or unneeded complexity.
