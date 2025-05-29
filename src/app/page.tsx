@@ -112,7 +112,7 @@ export default function Home() {
   alt="Location Is Everything Logo"
   width={56}
   height={56}
-  className="w-18 h-18 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
+  className="w-30 h-30 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
 />
 
   <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline-black drop-shadow-lg">
@@ -120,7 +120,7 @@ export default function Home() {
 </h2>
 
 <p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
-  With over two decades delivering geospatial solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, public safety, infrastructure, and startups—our approach is grounded in real-world impact.
+  With over two decades delivering Location Intelligence solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, public safety, infrastructure, and startups—our approach is grounded in real-world impact.
   <br /><br />
   We know the challenges first-hand: costly tools, bloated software, and the frustration of paying for capabilities you don’t need. That’s why we created The Location Is Everything Company—to bring you only the location intelligence that delivers value, without the headaches of licensing, lock-in, or unneeded complexity.
 </p>
