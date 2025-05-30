@@ -33,7 +33,7 @@ body {
 
 .black-outline {
   color: #fff;
-  -webkit-text-stroke: .80px #000;
+  -webkit-text-stroke: 1px #000;
   text-stroke: 1.5px #000;
 }
 

@@ -110,9 +110,9 @@ export default function Home() {
     <Image
   src="/logo.png"
   alt="Location Is Everything Logo"
-  width={56}
-  height={56}
-  className="w-30 h-30 mb-4 drop-shadow-lg border-2 border-black rounded-full bg-white"
+  width={77}
+  height={77}
+  className="w-70 h-70 mb-3 drop-shadow-lg border-13 border-black rounded-full bg-white"
 />
 
   <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline-black drop-shadow-lg">
