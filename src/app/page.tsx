@@ -64,33 +64,18 @@ export default function Home() {
         </div>
       )}
 
-      {/* NavBar - Fixed Top */}
-      <header className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-3 bg-black/70 shadow-lg z-30">
- <div className="flex items-center gap-2">
-<Image
-  src="/logo.png"
-  alt="Location Is Everything"
-  width={40}
-  height={40}
-  className="hidden md:inline w-10 h-10 border-2 border-black rounded-full bg-white mr-2"
-  priority
-/>
-  <span className="hidden md:inline text-base italic text-white drop-shadow-lg">
-    Location Is Everything
-  </span>
-</div>
-
-        <nav className="flex gap-8 items-center">
-          <button
-            onClick={() => setShowOfferings(true)}
-            className="hover:text-blue-400 transition text-white drop-shadow outline-none text-lg"
-          >
-            Offerings
-          </button>
-          <a href="#about" className="hover:text-blue-400 transition text-white drop-shadow text-lg">About</a>
-          <a href="mailto:questions@thelocationiseverythingco.com" className="hover:text-blue-400 transition text-white drop-shadow text-lg">Contact</a>
-        </nav>
-      </header>
+<header className="fixed top-0 right-0 z-30 px-8 py-4">
+  <nav className="flex gap-8 items-center justify-end">
+    <button
+      onClick={() => setShowOfferings(true)}
+      className="hover:text-blue-400 transition text-white text-lg"
+    >
+      Offerings
+    </button>
+    <a href="#about" className="hover:text-blue-400 transition text-white text-lg">About</a>
+    <a href="mailto:questions@thelocationiseverythingco.com" className="hover:text-blue-400 transition text-white text-lg">Contact</a>
+  </nav>
+</header>
 
       {/* Main Centered Content */}
       <main className="relative z-20 flex flex-col justify-center items-center h-screen w-full px-2">
@@ -112,7 +97,7 @@ export default function Home() {
   alt="Location Is Everything Logo"
   width={77}
   height={77}
-  className="w-70 h-70 mb-3 drop-shadow-lg border-13 border-black rounded-full bg-white"
+  className="w-70 h-70 mb-4 drop-shadow-lg border-13 border-black rounded-full bg-white"
 />
 
   <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline-black drop-shadow-lg">
