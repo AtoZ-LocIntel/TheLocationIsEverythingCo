@@ -59,7 +59,7 @@ export default function Home() {
         alt=""
         fill
         sizes="100vw"
-        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none z-0"
+        className="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none z-0"
         priority
         aria-hidden="true"
       />
@@ -81,7 +81,8 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-6 drop-shadow-lg text-white">Offerings</h2>
               <ul className="list-disc list-inside text-left text-gray-100 text-lg space-y-4 drop-shadow-lg max-w-xl">
                 <li>
-                  <b>Location Master Data Management:</b> Consultation, design support, and free initial consults—your data, organized by location.
+                  <b>Location Master Data Management:</b> Learn how to organize and manage your data using location. Consultation, design support,
+				  and free initial consults—your data, Location is Everything.
                 </li>
                 <li>
                   <b>Strategic Location Intelligence Solutions:</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
@@ -187,13 +188,13 @@ export default function Home() {
             `${barlowCondensed.className} text-4xl md:text-6xl font-extrabold italic mb-5
             bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.1] overflow-visible drop-shadow-lg`
           }>
-            Location Intelligence <span className="block md:inline">On Your Terms</span>
+            Location Intelligence <span className="block md:inline">Freedom</span>
           </h1>
           <p className="text-2xl md:text-3xl font-light mb-4 max-w-3xl text-white drop-shadow-lg">
             Ditch the vendor lock-in and big hit to your pocket, keep the insights!
           </p>
           <p className="text-lg md:text-xl text-gray-100 mb-6 max-w-3xl drop-shadow-lg">
-            Get full-featured location tools and data, built on open standards—accessible via the web, without the vendor commitment.
+            Get full-featured location tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
           </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
           <button
@@ -211,7 +212,7 @@ export default function Home() {
               className="w-65 h-65 mb-4 drop-shadow-lg border-12 border-black rounded-full bg-white"
             />
           </button>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 white-outline-black drop-shadow-lg">
+          <h2 className="text-3xl md:text-5xl font-bold mb-3 white-outline-black drop-shadow-lg">
             Why Choose Us?
           </h2>
           <p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
