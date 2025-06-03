@@ -382,10 +382,8 @@ export default function Home() {
           <p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
 		  Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its operational data.
 		  This is referred to as Location Master Data Management and allows your oganization right from the get go location MDM allows you to manage your portfolio beyond the table.  
-		  The , after decades of experience, that in 2025 and beyond you shouldn't have to work with and pay for bloated software
+		  In 2025 and beyond you should not have to work with and pay for bloated software
 		  and data solutions.  Get a solution custom tailored for your organization at a fraction of the cost.  
-            With over two decades delivering Location Intelligence solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, 
-			public safety, infrastructure, and startups—our approach is grounded in real-world impact.
           </p>
         </section>
       </main>
