@@ -149,71 +149,34 @@ export default function Home() {
 
       {/* --- POI HOTSPOTS LAYER --- */}
       <div className="absolute inset-0 z-30 pointer-events-none">
-        <button
-          style={{ top: '12.2%', left: '13.4%', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Learn about our Open Data approach!"
-          onClick={() => setActivePOI(0)}
-          aria-label="POI 1: Open Data"
-        ></button>
-        <button
-          style={{ top: '75.2%', left: '72.8%', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="See our Data Products!"
-          onClick={() => setActivePOI(1)}
-          aria-label="POI 2: Data Products"
-        ></button>
-        <button
-          style={{ top: '48.7%', left: '79%', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="See our Data Products!"
-          onClick={() => setActivePOI(2)}
-          aria-label="POI 3: Data Products"
-        ></button>
-        <button
-          style={{ top: '19%', left: '82.5%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Meet the Team!"
-          onClick={() => setActivePOI(3)}
-          aria-label="POI 4: Team"
-        ></button>
-        <button
-          style={{ top: '38.5%', left: '28.3%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Meet the Team!"
-          onClick={() => setActivePOI(4)}
-          aria-label="POI 5: Team"
-        ></button>
-        <button
-          style={{ top: '82%', left: '17%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Meet the Team!"
-          onClick={() => setActivePOI(5)}
-          aria-label="POI 6: Team"
-        ></button>
-        <button
-          style={{ top: '55.3%', left: '17.2%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Meet the Team!"
-          onClick={() => setActivePOI(6)}
-          aria-label="POI 7: Team"
-        ></button>
-        <button
-          style={{ top: '38.5%', left: '71.7%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 pointer-events-auto"
-          title="Meet the Team!"
-          onClick={() => setActivePOI(7)}
-          aria-label="POI 8: Team"
-        ></button>
+        {[
+          { top: '12.2%', left: '13.4%' },
+          { top: '75.2%', left: '72.8%' },
+          { top: '48.7%', left: '79%' },
+          { top: '19%', left: '82.5%', transform: 'translate(-50%, -50%)' },
+          { top: '38.5%', left: '28.3%', transform: 'translate(-50%, -50%)' },
+          { top: '82%', left: '17%', transform: 'translate(-50%, -50%)' },
+          { top: '55.3%', left: '17.2%', transform: 'translate(-50%, -50%)' },
+          { top: '38.5%', left: '71.7%', transform: 'translate(-50%, -50%)' }
+        ].map((style, idx) => (
+          <button
+            key={idx}
+            style={{ ...style, position: 'absolute' }}
+            className="w-12 h-12 md:w-33 md:h-33 opacity-0 pointer-events-auto"
+            title={POI_CONTENT[idx]?.title ?? "Info"}
+            onClick={() => setActivePOI(idx)}
+            aria-label={`POI ${idx + 1}: ${POI_CONTENT[idx]?.title ?? "Info"}`}
+          />
+        ))}
       </div>
 
       {/* --- Fancy Modal for Active POI --- */}
       {activePOI !== null && (
         <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-2"
           onClick={handlePOIModalBackgroundClick}
         >
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full text-gray-900 relative animate-fadein border-4 border-blue-200">
+          <div className="bg-white rounded-2xl shadow-2xl p-5 md:p-8 max-w-md w-full text-gray-900 relative animate-fadein border-4 border-blue-200 mx-2">
             <button
               onClick={() => setActivePOI(null)}
               className="absolute top-4 right-4 text-3xl text-gray-400 hover:text-blue-600"
@@ -221,18 +184,18 @@ export default function Home() {
             >
               &times;
             </button>
-            <h2 className={`text-2xl font-bold mb-2 ${POI_CONTENT[activePOI].ring?.replace("ring-", "text-")}`}>
+            <h2 className={`text-xl md:text-2xl font-bold mb-2 ${POI_CONTENT[activePOI].ring?.replace("ring-", "text-")}`}>
               {POI_CONTENT[activePOI].title}
             </h2>
-            <div className="text-lg">{POI_CONTENT[activePOI].body}</div>
+            <div className="text-base md:text-lg">{POI_CONTENT[activePOI].body}</div>
           </div>
         </div>
       )}
 
       {/* Offerings Modal */}
       {showOfferings && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="relative bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-8 w-full max-w-lg mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-2">
+          <div className="relative bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-lg mx-2">
             <button
               onClick={() => setShowOfferings(false)}
               className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl"
@@ -241,12 +204,12 @@ export default function Home() {
               <FaTimes />
             </button>
             <div className="flex flex-col items-center">
-              <FaChartBar className="text-5xl text-blue-400 mb-4 drop-shadow-lg" />
-              <h2 className="text-3xl font-bold mb-6 drop-shadow-lg text-white">Offerings</h2>
-              <ul className="list-disc list-inside text-left text-gray-100 text-lg space-y-4 drop-shadow-lg max-w-xl">
+              <FaChartBar className="text-4xl md:text-5xl text-blue-400 mb-4 drop-shadow-lg" />
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 drop-shadow-lg text-white">Offerings</h2>
+              <ul className="list-disc list-inside text-left text-gray-100 text-base md:text-lg space-y-3 md:space-y-4 drop-shadow-lg max-w-xl">
                 <li>
                   <b>Location Master Data Management:</b> Learn how to organize and manage your data using location. Consultation, design support,
-				  and free initial consults—your data, Location is Everything.
+                  and free initial consults—your data, Location is Everything.
                 </li>
                 <li>
                   <b>Strategic Location Intelligence Solutions:</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
@@ -262,10 +225,10 @@ export default function Home() {
 
       {/* Contact Form Modal */}
       {showContactForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-2">
           <form
             onSubmit={handleContactSubmit}
-            className="relative bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-8 w-full max-w-md mx-4 flex flex-col gap-4"
+            className="relative bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-2 flex flex-col gap-4"
           >
             <button
               type="button"
@@ -275,13 +238,13 @@ export default function Home() {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold text-white mb-2">Contact Us</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Contact Us</h2>
             <input
               name="name"
               type="text"
               required
               placeholder="Name*"
-              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none"
+              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none text-base"
               value={form.name}
               onChange={handleFormChange}
             />
@@ -289,7 +252,7 @@ export default function Home() {
               name="organization"
               type="text"
               placeholder="Organization"
-              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none"
+              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none text-base"
               value={form.organization}
               onChange={handleFormChange}
             />
@@ -298,7 +261,7 @@ export default function Home() {
               type="email"
               required
               placeholder="Email*"
-              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none"
+              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none text-base"
               value={form.email}
               onChange={handleFormChange}
             />
@@ -306,20 +269,20 @@ export default function Home() {
               name="phone"
               type="tel"
               placeholder="Phone"
-              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none"
+              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none text-base"
               value={form.phone}
               onChange={handleFormChange}
             />
             <textarea
               name="message"
               placeholder="Tell us what you're looking for…"
-              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none resize-none min-h-[64px]"
+              className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none resize-none min-h-[64px] text-base"
               value={form.message}
               onChange={handleFormChange}
             />
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold mt-2"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold mt-2 text-base"
             >
               Send
             </button>
@@ -328,36 +291,36 @@ export default function Home() {
       )}
 
       {/* Top-right menu */}
-      <header className="fixed top-0 right-0 z-30 px-8 py-4">
-        <nav className="flex gap-8 items-center justify-end">
+      <header className="fixed top-0 right-0 z-30 px-4 md:px-8 py-2 md:py-4">
+        <nav className="flex gap-4 md:gap-8 items-center justify-end">
           <button
             onClick={() => setShowOfferings(true)}
-            className="hover:text-blue-400 transition text-white text-lg"
+            className="hover:text-blue-400 transition text-white text-base md:text-lg"
           >
             Offerings
           </button>
-          <a href="#about" className="hover:text-blue-400 transition text-white text-lg">
+          <a href="#about" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             About
           </a>
-          <a href="mailto:questions@thelocationiseverythingco.com" className="hover:text-blue-400 transition text-white text-lg">
+          <a href="mailto:questions@thelocationiseverythingco.com" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             Contact
           </a>
         </nav>
       </header>
 
       {/* Main Centered Content */}
-      <main className="relative z-20 flex flex-col justify-center items-center h-screen w-full px-2">
-        <section className="flex flex-col items-center justify-center text-center w-full max-w-4xl py-4 mt-20 mb-20">
+      <main className="relative z-20 flex flex-col justify-center items-center w-full px-2">
+        <section className="flex flex-col items-center justify-center text-center w-full max-w-4xl px-2 py-4 mt-10 md:mt-20 mb-10 md:mb-20">
           <h1 className={
-            `${barlowCondensed.className} text-4xl md:text-6xl font-extrabold italic mb-5
-            bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight leading-[1.1] overflow-visible drop-shadow-lg`
+            `${barlowCondensed.className} text-2xl md:text-6xl font-extrabold italic mb-4 md:mb-5
+            bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight leading-tight md:leading-[1.1] overflow-visible drop-shadow-lg`
           }>
             Location Intelligence <span className="block md:inline">Freedom</span>
           </h1>
-          <p className="text-2xl md:text-3xl font-light mb-4 max-w-3xl text-white drop-shadow-lg">
+          <p className="text-base md:text-3xl font-light mb-2 md:mb-4 max-w-3xl text-white drop-shadow-lg">
             Ditch the vendor lock-in and big hit to your pocket, keep the insights!
           </p>
-          <p className="text-lg md:text-xl text-gray-100 mb-6 max-w-3xl drop-shadow-lg">
+          <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
             Get full-featured location tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
           </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
@@ -371,28 +334,26 @@ export default function Home() {
             <Image
               src="/logo.png"
               alt="Location Is Everything Logo"
-              width={77}
-              height={77}
-              className="w-65 h-65 mb-4 drop-shadow-lg border-12 border-black rounded-full bg-white"
+              width={300}
+              height={300}
+              className="w-30 h-30 md:w-65 md:h-65 mb-4 drop-shadow-lg border-8 md:border-12 border-black rounded-full bg-white"
             />
           </button>
-          <h2 className="text-3xl md:text-5xl font-bold mb-3 white-outline-black drop-shadow-lg">
+          <h2 className="text-xl md:text-5xl font-bold mb-2 md:mb-3 white-outline-black drop-shadow-lg">
             Why Choose Us?
           </h2>
-          <p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
-		  Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its operational data.
-		  This is referred to as Location Master Data Management and allows your oganization right from the get go location MDM allows you to manage your portfolio beyond the table.  
-		  In 2025 and beyond you should not have to work with and pay for bloated software
-		  and data solutions.  Get a solution custom tailored for your organization at a fraction of the cost.  
+          <p className="text-sm md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
+            Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its operational data.
+            This is referred to as Location Master Data Management and allows your organization, right from the get go, to manage your portfolio beyond the table.
+            In 2025 and beyond you should not have to work with and pay for bloated software and data solutions. Get a solution custom tailored for your organization at a fraction of the cost.
           </p>
         </section>
       </main>
 
-           {/* Footer - Fixed Bottom */}
-      <footer className="fixed bottom-0 left-0 w-full text-center py-3 text-gray-200 text-base border-t border-gray-800 bg-black/80 drop-shadow-lg z-30">
+      {/* Footer - NOT fixed, so it flows with page on mobile */}
+      <footer className="w-full text-center py-3 text-gray-200 text-base border-t border-gray-800 bg-black/80 drop-shadow-lg z-30">
         © {new Date().getFullYear()} The Location Is Everything Co. All rights reserved.
       </footer>
     </div>
   );
 }
-
