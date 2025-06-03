@@ -17,6 +17,82 @@ const barlowCondensed = Barlow_Condensed({
   display: 'swap',
 });
 
+// Popup content for each POI (edit or expand as needed!)
+const POI_CONTENT = [
+  {
+    title: "Open Data Approach",
+    body: (
+      <>
+        <strong>Open Data:</strong> We connect you to open, authoritative data—no vendor lock-in!
+      </>
+    ),
+    ring: "ring-blue-300"
+  },
+  {
+    title: "Data Products",
+    body: (
+      <>
+        <strong>Data Products:</strong> Our custom animal-vehicle collision data puts you ahead of the curve.
+      </>
+    ),
+    ring: "ring-green-300"
+  },
+  {
+    title: "More Data Products",
+    body: (
+      <>
+        <strong>Data Products:</strong> More specialized data for your operations.
+      </>
+    ),
+    ring: "ring-green-300"
+  },
+  {
+    title: "Meet the Team",
+    body: (
+      <>
+        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+      </>
+    ),
+    ring: "ring-yellow-300"
+  },
+  {
+    title: "Meet the Team",
+    body: (
+      <>
+        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+      </>
+    ),
+    ring: "ring-yellow-300"
+  },
+  {
+    title: "Meet the Team",
+    body: (
+      <>
+        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+      </>
+    ),
+    ring: "ring-yellow-300"
+  },
+  {
+    title: "Meet the Team",
+    body: (
+      <>
+        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+      </>
+    ),
+    ring: "ring-yellow-300"
+  },
+  {
+    title: "Meet the Team",
+    body: (
+      <>
+        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+      </>
+    ),
+    ring: "ring-yellow-300"
+  }
+];
+
 export default function Home() {
   const [showOfferings, setShowOfferings] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
@@ -27,6 +103,7 @@ export default function Home() {
     phone: "",
     message: "",
   });
+  const [activePOI, setActivePOI] = useState<number | null>(null);
 
   const handleFormChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -51,6 +128,11 @@ export default function Home() {
     });
   };
 
+  // Handles closing modal when clicking outside the modal content
+  const handlePOIModalBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) setActivePOI(null);
+  };
+
   return (
     <div className={`relative h-screen w-full overflow-hidden ${nunito.className}`}>
       {/* Background image */}
@@ -63,7 +145,89 @@ export default function Home() {
         priority
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-950 opacity-35 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-950 opacity-35 z-10 pointer-events-none" />
+
+      {/* --- POI HOTSPOTS LAYER --- */}
+      <div className="absolute inset-0 z-30 pointer-events-none">
+        <button
+          style={{ top: '12.2%', left: '13.4%', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 pointer-events-auto"
+          title="Learn about our Open Data approach!"
+          onClick={() => setActivePOI(0)}
+          aria-label="POI 1: Open Data"
+        ></button>
+        <button
+          style={{ top: '75.2%', left: '72.8%', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 pointer-events-auto"
+          title="See our Data Products!"
+          onClick={() => setActivePOI(1)}
+          aria-label="POI 2: Data Products"
+        ></button>
+        <button
+          style={{ top: '48.7%', left: '79%', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-green-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          title="See our Data Products!"
+          onClick={() => setActivePOI(2)}
+          aria-label="POI 3: Data Products"
+        ></button>
+        <button
+          style={{ top: '19%', left: '82.5%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          title="Meet the Team!"
+          onClick={() => setActivePOI(3)}
+          aria-label="POI 4: Team"
+        ></button>
+        <button
+          style={{ top: '38.5%', left: '28.3%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          title="Meet the Team!"
+          onClick={() => setActivePOI(4)}
+          aria-label="POI 5: Team"
+        ></button>
+        <button
+          style={{ top: '82%', left: '17%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 pointer-events-auto"
+          title="Meet the Team!"
+          onClick={() => setActivePOI(5)}
+          aria-label="POI 6: Team"
+        ></button>
+        <button
+          style={{ top: '55.3%', left: '17.2%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          title="Meet the Team!"
+          onClick={() => setActivePOI(6)}
+          aria-label="POI 7: Team"
+        ></button>
+        <button
+          style={{ top: '38.5%', left: '71.7%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
+          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          title="Meet the Team!"
+          onClick={() => setActivePOI(7)}
+          aria-label="POI 8: Team"
+        ></button>
+      </div>
+
+      {/* --- Fancy Modal for Active POI --- */}
+      {activePOI !== null && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          onClick={handlePOIModalBackgroundClick}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full text-gray-900 relative animate-fadein border-4 border-blue-200">
+            <button
+              onClick={() => setActivePOI(null)}
+              className="absolute top-4 right-4 text-3xl text-gray-400 hover:text-blue-600"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h2 className={`text-2xl font-bold mb-2 ${POI_CONTENT[activePOI].ring?.replace("ring-", "text-")}`}>
+              {POI_CONTENT[activePOI].title}
+            </h2>
+            <div className="text-lg">{POI_CONTENT[activePOI].body}</div>
+          </div>
+        </div>
+      )}
 
       {/* Offerings Modal */}
       {showOfferings && (
@@ -216,17 +380,21 @@ export default function Home() {
             Why Choose Us?
           </h2>
           <p className="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
-            With over two decades delivering Location Intelligence solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, public safety, infrastructure, and startups—our approach is grounded in real-world impact.
-            <br /><br />
-            We know the challenges first-hand: costly tools, bloated software, and the frustration of paying for capabilities you don’t need. That’s why we created The Location Is Everything Company—to bring you only the location intelligence that delivers value, without the headaches of licensing, lock-in, or unneeded complexity.
+		  Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its operational data.
+		  This is referred to as Location Master Data Management and allows your oganization right from the get go location MDM allows you to manage your portfolio beyond the table.  
+		  The , after decades of experience, that in 2025 and beyond you shouldn't have to work with and pay for bloated software
+		  and data solutions.  Get a solution custom tailored for your organization at a fraction of the cost.  
+            With over two decades delivering Location Intelligence solutions for some of the world’s most demanding industries—from Fortune 100 insurance to leading-edge technology, 
+			public safety, infrastructure, and startups—our approach is grounded in real-world impact.
           </p>
         </section>
       </main>
 
-      {/* Footer - Fixed Bottom */}
+           {/* Footer - Fixed Bottom */}
       <footer className="fixed bottom-0 left-0 w-full text-center py-3 text-gray-200 text-base border-t border-gray-800 bg-black/80 drop-shadow-lg z-30">
         © {new Date().getFullYear()} The Location Is Everything Co. All rights reserved.
       </footer>
     </div>
   );
 }
+
