@@ -165,21 +165,21 @@ export default function Home() {
         ></button>
         <button
           style={{ top: '48.7%', left: '79%', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-green-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          className="w-33 h-33 opacity-0 pointer-events-auto"
           title="See our Data Products!"
           onClick={() => setActivePOI(2)}
           aria-label="POI 3: Data Products"
         ></button>
         <button
           style={{ top: '19%', left: '82.5%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          className="w-33 h-33 opacity-0 pointer-events-auto"
           title="Meet the Team!"
           onClick={() => setActivePOI(3)}
           aria-label="POI 4: Team"
         ></button>
         <button
           style={{ top: '38.5%', left: '28.3%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          className="w-33 h-33 opacity-0 pointer-events-auto"
           title="Meet the Team!"
           onClick={() => setActivePOI(4)}
           aria-label="POI 5: Team"
@@ -193,14 +193,14 @@ export default function Home() {
         ></button>
         <button
           style={{ top: '55.3%', left: '17.2%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          className="w-33 h-33 opacity-0 pointer-events-auto"
           title="Meet the Team!"
           onClick={() => setActivePOI(6)}
           aria-label="POI 7: Team"
         ></button>
         <button
           style={{ top: '38.5%', left: '71.7%', transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          className="w-33 h-33 opacity-0 hover:opacity-100 focus:opacity-100 ring-2 ring-yellow-300 hover:ring-4 focus:ring-4 ring-offset-2 rounded-full pointer-events-auto transition"
+          className="w-33 h-33 opacity-0 pointer-events-auto"
           title="Meet the Team!"
           onClick={() => setActivePOI(7)}
           aria-label="POI 8: Team"
