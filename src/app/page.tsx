@@ -134,7 +134,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`relative h-screen w-full overflow-hidden ${nunito.className}`}>
+    <div className={`relative min-h-screen w-full overflow-x-hidden ${nunito.className}`}>
       {/* Background image */}
       <Image
         src="/title_image.png"
