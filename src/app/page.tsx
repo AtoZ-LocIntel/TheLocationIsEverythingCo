@@ -32,7 +32,7 @@ const POI_CONTENT = [
     title: "Niche Data Products",
     body: (
       <>
-        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact 'AVI' AND "Aging Infrastructure Suite" data products!
+        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact "AVI" AND "Aging Infrastructure Suite" data products!
       </>
     ),
     ring: "ring-green-300"
@@ -41,7 +41,7 @@ const POI_CONTENT = [
     title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Don't Marry your Vendor</strong>    You shouldn't have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
+        <strong>Don't Marry your Vendor</strong>    You should not have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
       </>
     ),
     ring: "ring-green-300"
@@ -59,7 +59,7 @@ const POI_CONTENT = [
     title: "Our Vision",
     body: (
       <>
-        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location isn't a nice to have but should be your data management foundation. Imagine 'google maps' but for your business!
+        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location isn't a nice to have but should be your data management foundation. Imagine google maps but for your business!
       </>
     ),
     ring: "ring-yellow-300"
@@ -84,7 +84,7 @@ const POI_CONTENT = [
     title: "Turn Operational Data into reliable Analytical Data",
     body: (
       <>
-        <strong></strong> Use Location MDM to turn operational data into reliable downstream 'Analytical Products' for real insight!
+        <strong></strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insight!
       </>
     ),
     ring: "ring-yellow-300"
