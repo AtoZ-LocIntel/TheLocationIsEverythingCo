@@ -41,7 +41,7 @@ const POI_CONTENT = [
     title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Don't Marry your Vendor</strong>    You should not have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
+        <strong>Dont Marry your Vendor</strong>    You should not have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
       </>
     ),
     ring: "ring-green-300"
@@ -50,7 +50,7 @@ const POI_CONTENT = [
     title: "Company Background",
     body: (
       <>
-        <strong>Our Team:</strong> Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
+        <strong>Our Team</strong> Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
       </>
     ),
     ring: "ring-yellow-300"
@@ -59,7 +59,7 @@ const POI_CONTENT = [
     title: "Our Vision",
     body: (
       <>
-        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location isn't a nice to have but should be your data management foundation. Imagine google maps but for your business!
+        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location is not a nice to have but should be your data management foundation. Imagine google maps but for your business!
       </>
     ),
     ring: "ring-yellow-300"
