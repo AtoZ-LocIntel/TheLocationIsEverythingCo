@@ -20,64 +20,71 @@ const barlowCondensed = Barlow_Condensed({
 // Popup content for each POI (edit or expand as needed!)
 const POI_CONTENT = [
   {
-    title: "Open Data Approach",
+    title: "Open Tool, Code and Data Approach",
     body: (
       <>
-        <strong>Open Data:</strong> We connect you to open, authoritative data—no vendor lock-in!
+        <strong>Reliable and Affordable</strong> We connect you to open, authoritative geospatial and location intelligence solutions without those big mapping and location ingelligence vendors! nolock-in!, just insights at fraction of the cost!
       </>
     ),
     ring: "ring-blue-300"
   },
   {
-    title: "Data Products",
+    title: "Niche Data Products",
     body: (
       <>
-        <strong>Data Products:</strong> Our custom animal-vehicle collision data puts you ahead of the curve.
+        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact 'AVI' AND "Aging Infrastructure Suite" data products!
       </>
     ),
     ring: "ring-green-300"
   },
   {
-    title: "More Data Products",
+    title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Data Products:</strong> More specialized data for your operations.
+        <strong>Don't Marry your Vendor</strong>    You shouldn't have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
       </>
     ),
     ring: "ring-green-300"
   },
   {
-    title: "Meet the Team",
+    title: "Company Background",
     body: (
       <>
-        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+        <strong>Our Team:</strong> Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
       </>
     ),
     ring: "ring-yellow-300"
   },
   {
-    title: "Meet the Team",
+    title: "Our Vision",
     body: (
       <>
-        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location isn't a nice to have but should be your data management foundation. Imagine 'google maps' but for your business!
       </>
     ),
     ring: "ring-yellow-300"
   },
   {
-    title: "Meet the Team",
+    title: "Customers",
     body: (
       <>
-        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+        <strong></strong> * Finance
+		*Retail
+		*Healthcare
+		*Manufacturing
+		*Energy
+		*Insurance
+		*Real Estate
+		*Technology
       </>
     ),
     ring: "ring-yellow-300"
   },
   {
-    title: "Meet the Team",
+    title: "Turn Operational Data into reliable Analytical Data",
     body: (
       <>
-        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+        <strong></strong> Use Location MDM to turn operational data into reliable downstream 'Analytical Products' for real insight!
       </>
     ),
     ring: "ring-yellow-300"
