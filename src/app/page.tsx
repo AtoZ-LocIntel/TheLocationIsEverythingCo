@@ -93,7 +93,7 @@ const POI_CONTENT = [
     title: "Unique Location Intelligence Solutions",
     body: (
       <>
-        <strong></strong> Stay tuned for our location based and very easy to use and configure "Field Scheduling" SaaS solution!
+        <strong></strong> Stay tuned for our location based and very easy to use and configure Field Crew Scheduling SaaS solution!
       </>
     ),
     ring: "ring-yellow-300"
@@ -215,14 +215,14 @@ export default function Home() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 drop-shadow-lg text-white">Offerings</h2>
               <ul className="list-disc list-inside text-left text-gray-100 text-base md:text-lg space-y-3 md:space-y-4 drop-shadow-lg max-w-xl">
                 <li>
-                  <b>Location Master Data Management:</b> Learn how to organize and manage your data using location. Consultation, design support,
+                  <b>Location Master Data Management</b> Learn how to organize and manage your data using location. Consultation, design support,
                   and free initial consults—your data, Location is Everything.
                 </li>
                 <li>
-                  <b>Strategic Location Intelligence Solutions:</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
+                  <b>Strategic Location Intelligence Solutions</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
                 </li>
                 <li>
-                  <b>Specialized Data Products:</b> Stay tuned for our Animal Vehicle Collision aggregation insights and more!
+                  <b>Specialized Data Products</b> Stay tuned for our Animal Vehicle Collision aggregation insights and more!
                 </li>
               </ul>
             </div>
