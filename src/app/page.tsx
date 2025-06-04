@@ -93,7 +93,7 @@ const POI_CONTENT = [
     title: "Unique Location Intelligence Solutions",
     body: (
       <>
-        <strong></strong> Stay tuned for our location based and very easy to use and configure Field Crew Scheduling SaaS solution!
+        <strong>Location Based Solutions to: </strong> -- Schedule your field crews easily!, Find properties and open spatial data in new and innovative ways!
       </>
     ),
     ring: "ring-yellow-300"
@@ -329,9 +329,10 @@ export default function Home() {
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
             Get full-featured location tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
-
-			Click on the poi icons to learn more!
-          </p>
+			</p>
+		  <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+		  Click on the poi icons to learn more!
+		  </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
           <button
             onClick={() => setShowContactForm(true)}
