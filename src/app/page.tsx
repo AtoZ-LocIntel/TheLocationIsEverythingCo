@@ -41,7 +41,7 @@ const POI_CONTENT = [
     title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Dont marry your geospatila/location intelligence vendor</strong> -- Get and pay for the insights you need, not a bloated platform or data service that makes you pay for capabilities and data you will never use.
+        <strong>Dont marry your geospatial and location intelligence vendor</strong> -- Get and pay for the insights you need, not a bloated platform or data service that makes you pay for capabilities and data you will never use.
       </>
     ),
     ring: "ring-green-300"
