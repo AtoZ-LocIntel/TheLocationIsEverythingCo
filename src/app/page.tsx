@@ -32,7 +32,7 @@ const POI_CONTENT = [
     title: "Niche Data Products",
     body: (
       <>
-        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact "AVI" AND "Aging Infrastructure Suite" data products!
+        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact (AVI) AND Aging Infrastructure Suite data products!
       </>
     ),
     ring: "ring-green-300"
