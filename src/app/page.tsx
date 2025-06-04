@@ -20,10 +20,10 @@ const barlowCondensed = Barlow_Condensed({
 // Popup content for each POI (edit or expand as needed!)
 const POI_CONTENT = [
   {
-    title: "Open Tool, Code and Data Approach",
+    title: "Open Tools, Code and Data Approach",
     body: (
       <>
-        <strong>Reliable and Affordable</strong> We connect you to open and authoritative geospatial and location intelligence solutions without those big mapping and location ingelligence vendors! nolock-in!, just insights at fraction of the cost!
+        <strong>Reliable and Affordable</strong> -- We connect you to open and authoritative geospatial and location intelligence solutions without those big mapping and location ingelligence vendors! no lock-in!, just insights at a fraction of the cost!
       </>
     ),
     ring: "ring-blue-300"
@@ -32,7 +32,7 @@ const POI_CONTENT = [
     title: "Niche Data Products",
     body: (
       <>
-        <strong></strong> There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact (AVI) AND Aging Infrastructure Suite data products!
+        <strong></strong>There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact (AVI) and our Urban Insights Suite of data products!
       </>
     ),
     ring: "ring-green-300"
@@ -41,7 +41,7 @@ const POI_CONTENT = [
     title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Dont Marry your Vendor</strong>    You should not have to marry your geospatial and location intelligence vendor, get the insights you pay for not a bloated platform that makes you pay for capabilities you will never use.
+        <strong>Dont marry your geospatila/location intelligence vendor</strong> -- Get and pay for the insights you need, not a bloated platform or data service that makes you pay for capabilities and data you will never use.
       </>
     ),
     ring: "ring-green-300"
@@ -50,7 +50,7 @@ const POI_CONTENT = [
     title: "Company Background",
     body: (
       <>
-        <strong>Our Team</strong> Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
+        <strong>Our Team</strong> -- Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
       </>
     ),
     ring: "ring-yellow-300"
@@ -59,7 +59,7 @@ const POI_CONTENT = [
     title: "Our Vision",
     body: (
       <>
-        <strong>Location Master Data Management</strong> We believe that organizing and managing your data using location is not a nice to have but should be your data management foundation. Imagine google maps but for your business!
+        <strong>Location Master Data Management</strong> -- We believe that organizing and managing your data using location is not a nice to have but should be your data management foundation. Imagine google maps but for your business!
       </>
     ),
     ring: "ring-yellow-300"
@@ -81,10 +81,10 @@ const POI_CONTENT = [
     ring: "ring-yellow-300"
   },
   {
-    title: "Turn Operational Data into reliable Analytical Data",
+    title: "Turn Operational Data into Reliable Analytical Data",
     body: (
       <>
-        <strong></strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insights!
+        <strong>You can do this without parcels and buildings!</strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insights!
       </>
     ),
     ring: "ring-yellow-300"
@@ -215,14 +215,14 @@ export default function Home() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 drop-shadow-lg text-white">Offerings</h2>
               <ul className="list-disc list-inside text-left text-gray-100 text-base md:text-lg space-y-3 md:space-y-4 drop-shadow-lg max-w-xl">
                 <li>
-                  <b>Location Master Data Management</b> Learn how to organize and manage your data using location. Consultation, design support,
-                  and free initial consults—your data, Location is Everything.
+                  <b>Location Master Data Management</b> Learn how to organize and manage your data using location affordably. Consultation, design support,
+                  please reach out for a free consult!, Location is Everything.
                 </li>
                 <li>
                   <b>Strategic Location Intelligence Solutions</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
                 </li>
                 <li>
-                  <b>Specialized Data Products</b> Stay tuned for our Animal Vehicle Collision aggregation insights and more!
+                  <b>Specialized Data Products</b> Stay tuned for our first release of Animal Vehicle Impact and Urban Insights data products and more!
                 </li>
               </ul>
             </div>
@@ -329,6 +329,8 @@ export default function Home() {
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
             Get full-featured location tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
+
+			Click on the poi icons to learn more!
           </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
           <button
