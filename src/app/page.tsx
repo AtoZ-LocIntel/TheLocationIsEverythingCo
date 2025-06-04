@@ -23,7 +23,7 @@ const POI_CONTENT = [
     title: "Open Tool, Code and Data Approach",
     body: (
       <>
-        <strong>Reliable and Affordable</strong> We connect you to open, authoritative geospatial and location intelligence solutions without those big mapping and location ingelligence vendors! nolock-in!, just insights at fraction of the cost!
+        <strong>Reliable and Affordable</strong> We connect you to open and authoritative geospatial and location intelligence solutions without those big mapping and location ingelligence vendors! nolock-in!, just insights at fraction of the cost!
       </>
     ),
     ring: "ring-blue-300"
@@ -84,16 +84,16 @@ const POI_CONTENT = [
     title: "Turn Operational Data into reliable Analytical Data",
     body: (
       <>
-        <strong></strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insight!
+        <strong></strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insights!
       </>
     ),
     ring: "ring-yellow-300"
   },
   {
-    title: "Meet the Team",
+    title: "Unique Location Intelligence Solutions",
     body: (
       <>
-        <strong>Our Team:</strong> 25+ years across insurance, tech, and geospatial solutions!
+        <strong></strong> Stay tuned for our location based and very easy to use and configure "Field Scheduling" SaaS solution!
       </>
     ),
     ring: "ring-yellow-300"
