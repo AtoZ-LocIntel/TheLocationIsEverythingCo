@@ -32,7 +32,7 @@ const POI_CONTENT = [
     title: "Animal-Vehicle Impact Suite",
     body: (
       <>
-        <strong></strong>Specifically tailored for automotive insurance industry and leveraging our innovative data capture methods we've aggregated animal to vehicle impact data on roadways and zipcodes in select states.
+        <strong></strong>Specifically tailored for automotive insurance industry and leveraging our innovative data capture methods we have aggregated animal to vehicle impact data on roadways and zipcodes in select states.
       </>
     ),
     ring: "ring-green-300"
