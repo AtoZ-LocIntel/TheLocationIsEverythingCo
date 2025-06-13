@@ -222,7 +222,7 @@ export default function Home() {
                   <b>Strategic Location Intelligence Solutions</b> Intuitive map tools, open data viewers, and property finders—no vendor lock-in.
                 </li>
                 <li>
-                  <b>Specialized Data Products</b> Stay tuned for our first release of Animal Vehicle Impact and Urban Insights data products and more!
+                  <b>Differentiating Data Products</b>With a focus on the insurance industry stay tuned for: Animal-Vehicle Impact Products and our Urban Insights Data Suite!
                 </li>
               </ul>
             </div>
