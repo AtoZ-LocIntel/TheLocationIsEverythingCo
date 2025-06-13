@@ -29,10 +29,10 @@ const POI_CONTENT = [
     ring: "ring-blue-300"
   },
   {
-    title: "Niche Data Products",
+    title: "Animal-Vehicle Impact Suite",
     body: (
       <>
-        <strong></strong>There are many data product solutions out there today so while our data portfolio is small we take pride in getting it right and providing new insights. Stay tuned for Animal-Vehicle Impact (AVI) and our Urban Insights Suite of data products!
+        <strong></strong>Specifically tailored for automotive insurance industry and leveraging our innovative data capture methods we've aggregated animal to vehicle impact data on roadways and zipcodes in select states.
       </>
     ),
     ring: "ring-green-300"
@@ -41,16 +41,16 @@ const POI_CONTENT = [
     title: "Affordable Location Intelligence Solutions",
     body: (
       <>
-        <strong>Dont marry your geospatial and location intelligence vendor</strong> -- Get and pay for the insights you need, not a bloated platform or data service that makes you pay for capabilities and data you will never use.
+        <strong>Ditch your geospatial and location intelligence vendor</strong> -- Get and pay for the insights you need, not a bloated platform or data service that makes you pay for capabilities and data you will never use.
       </>
     ),
     ring: "ring-green-300"
   },
   {
-    title: "Company Background",
+    title: "Urban Insights Data Suite",
     body: (
       <>
-        <strong>Our Team</strong> -- Decades of experience bringing Location Intelligence insights to Insurance, Big Tech, Big Data, and start-up organizations.
+        <strong>Our Team</strong> -- Based on historical 311 service calls we've derived neighborhood level level insights into neighborhoods across the largest US cities.  Gain new innovative insights into the infrastructure health of a neighborhood.
       </>
     ),
     ring: "ring-yellow-300"
@@ -84,7 +84,7 @@ const POI_CONTENT = [
     title: "Turn Operational Data into Reliable Analytical Data",
     body: (
       <>
-        <strong>You can do this without parcels and buildings!</strong> Use Location MDM to turn operational data into reliable downstream Analytical Products for real insights!
+        <strong>You can do this without parcels and buildings!</strong> Use Location MDM to turn operational and/or 'Big' data into reliable downstream Analytical Products for real insights!
       </>
     ),
     ring: "ring-yellow-300"
@@ -325,10 +325,10 @@ export default function Home() {
             Location Intelligence <span className="block md:inline">Freedom</span>
           </h1>
           <p className="text-base md:text-3xl font-light mb-2 md:mb-4 max-w-3xl text-white drop-shadow-lg">
-            Ditch the vendor lock-in and big hit to your pocket, keep the insights!
+            Break free from big vendor lock-in and big hit to your pocket, keep the insights!
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
-            Get full-featured location tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
+            Get full-featured location intelligence tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
 			</p>
 		  <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
 		  Click on the poi icons to learn more!
