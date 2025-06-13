@@ -50,7 +50,7 @@ const POI_CONTENT = [
     title: "Urban Insights Data Suite",
     body: (
       <>
-        <strong>Our Team</strong> -- Based on historical 311 service calls we've derived neighborhood level level insights into neighborhoods across the largest US cities.  Gain new innovative insights into the infrastructure health of a neighborhood.
+        <strong>Our Team</strong> -- Based on historical 311 service calls we have derived neighborhood level level insights into neighborhoods across the largest US cities.  Gain new innovative insights into the infrastructure health of a neighborhood.
       </>
     ),
     ring: "ring-yellow-300"
@@ -84,7 +84,7 @@ const POI_CONTENT = [
     title: "Turn Operational Data into Reliable Analytical Data",
     body: (
       <>
-        <strong>You can do this without parcels and buildings!</strong> Use Location MDM to turn operational and/or 'Big' data into reliable downstream Analytical Products for real insights!
+        <strong>You can do this without parcels and buildings!</strong> Use Location MDM to turn operational and/or Big data into reliable downstream Analytical Products for real insights!
       </>
     ),
     ring: "ring-yellow-300"
@@ -282,7 +282,7 @@ export default function Home() {
             />
             <textarea
               name="message"
-              placeholder="Tell us what you're looking for…"
+              placeholder="Tell us what you are looking for…"
               className="rounded p-2 bg-gray-800 text-white border border-gray-700 focus:outline-none resize-none min-h-[64px] text-base"
               value={form.message}
               onChange={handleFormChange}
