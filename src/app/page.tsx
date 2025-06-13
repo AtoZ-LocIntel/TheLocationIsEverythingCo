@@ -32,7 +32,7 @@ const POI_CONTENT = [
     title: "Animal-Vehicle Impact Suite",
     body: (
       <>
-        <strong></strong>Specifically tailored for automotive insurance industry and leveraging our innovative data capture methods we have aggregated animal to vehicle impact data on roadways and zipcodes in select states.
+        <strong></strong>Specifically tailored for the automotive insurance industry and leveraging our innovative data capture methods we have aggregated animal to vehicle impact data on roadways and zipcodes in select states.
       </>
     ),
     ring: "ring-green-300"
@@ -47,10 +47,10 @@ const POI_CONTENT = [
     ring: "ring-green-300"
   },
   {
-    title: "Urban Insights Data Suite",
+    title: "Data Product Passion",
     body: (
       <>
-        <strong>Our Team</strong> -- Based on historical 311 service calls we have derived neighborhood level level insights into neighborhoods across the largest US cities.  Gain new innovative insights into the infrastructure health of a neighborhood.
+        <strong>Urban Insights Data Suite</strong> -- Based on historical 311 service calls we have derived neighborhood level insights across the largest US cities.  
       </>
     ),
     ring: "ring-yellow-300"
