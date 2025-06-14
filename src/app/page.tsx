@@ -33,7 +33,15 @@ const POI_CONTENT = [
     body: (
       <>
         <strong></strong>Specifically tailored for the automotive insurance industry and leveraging our innovative data capture methods we have aggregated animal to vehicle impact data on roadways and zipcodes in select states.
-      </>
+      <br />
+	      <Image
+          src="/ca_crospts_zips_sample_4_good.png"
+          alt="Sample Animal-Vehicle Collision Data"
+          width={640}
+          height={540}
+          className="mt-4 rounded-lg shadow-lg mx-auto"
+        />
+		</>
     ),
     ring: "ring-green-300"
   },
@@ -306,6 +314,14 @@ export default function Home() {
           >
             Offerings
           </button>
+          {/* ---- HERE IS YOUR NEW MENU ITEM ---- */}
+          <a
+            href="/avi"
+            className="hover:text-blue-400 transition text-white text-base md:text-lg"
+          >
+            Animal-Vehicle Impacts (AVI)
+          </a>
+          {/* ------------------------------------ */}
           <a href="#about" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             About
           </a>
