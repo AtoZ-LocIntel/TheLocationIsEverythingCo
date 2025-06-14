@@ -17,13 +17,13 @@ export default function AVIPage() {
         Animal-Vehicle Impacts (AVI) Data Products
       </h1>
       <p className="text-lg mb-8 text-center max-w-2xl">
-        Explore our innovative data aggregation for animal-vehicle collisions. Stay tuned for a live demo app!
+        Explore our innovative Animal-Vehicle Impact (AVI) Data Products, state roll out beginning in late 2025.  Michigan, Iowa, Minnesota, Texas, California, Nebraska, Kansas, New York, South Dakota, Montana, Nevada, Arizona, New Mexico, Colorado, New Hampshire and Vermont.
       </p>
       <Image
-        src="/ca_crospts_zips_sample_4_good.png"
+        src="/avi_cnts_zip_page.png"
         alt="Sample Animal-Vehicle Collision Data"
         width={940}
-        height={740}
+        height={840}
         className="rounded-lg shadow-xl mx-auto"
         priority
       />
