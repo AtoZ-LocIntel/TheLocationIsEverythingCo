@@ -17,7 +17,7 @@ export default function UrbanInsightsPage() {
         Urban Insights Data Suite
       </h1>
       <p className="text-lg mb-8 text-center max-w-2xl">
-        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. Stay tuned for our inital release of our "Infrastructure Health Index for Neighborhoods"
+        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. Stay tuned for our inital release of our Infrastructure Health Index for Neighborhoods!
       </p>
       {/* You can add a sample image here if you have one, or a placeholder: */}
 
