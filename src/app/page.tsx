@@ -321,6 +321,9 @@ export default function Home() {
           >
             Animal-Vehicle Impacts (AVI)
           </a>
+		      <a href="/urban" className="hover:text-blue-400 transition text-white text-base md:text-lg">
+      Urban Insights Data Suite
+    </a>
           {/* ------------------------------------ */}
           <a href="#about" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             About
