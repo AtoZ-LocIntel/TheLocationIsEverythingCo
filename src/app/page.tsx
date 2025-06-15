@@ -347,7 +347,7 @@ export default function Home() {
             Break free from big vendor lock-in and big hit to your pocket, keep the insights!
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
-            Get full-featured location intelligence tools and data that you need, built on open standards—accessible via the web, without the vendor commitment.
+            Get full-featured location intelligence geospatial tools and data that you need without the vendor commitment.
 			</p>
 		  <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
 		  Click on the poi icons to learn more!
