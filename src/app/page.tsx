@@ -76,14 +76,14 @@ const POI_CONTENT = [
     title: "Customers",
     body: (
       <>
-        <strong></strong> * Finance
-		*Retail
-		*Healthcare
-		*Manufacturing
-		*Energy
-		*Insurance
-		*Real Estate
-		*Technology
+        <strong></strong> Insurance/
+		RealEstate/
+		Finance/
+		Retail/
+		Healthcare/
+		Manufacturing/
+		Energy/
+		Technology
       </>
     ),
     ring: "ring-yellow-300"
@@ -132,7 +132,7 @@ export default function Home() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nOrganization: ${form.organization}\nEmail: ${form.email}\nPhone: ${form.phone}\n\nMessage:\n${form.message}`
     );
-    window.location.href = `mailto:questions@thelocationiseverythingco.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:questions@locationiseverythingco.com?subject=${subject}&body=${body}`;
     setShowContactForm(false);
     setForm({
       name: "",
@@ -328,7 +328,7 @@ export default function Home() {
           <a href="#about" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             About
           </a>
-          <a href="mailto:questions@thelocationiseverythingco.com" className="hover:text-blue-400 transition text-white text-base md:text-lg">
+          <a href="mailto:questions@locationiseverythingco.com" className="hover:text-blue-400 transition text-white text-base md:text-lg">
             Contact
           </a>
         </nav>
@@ -372,9 +372,9 @@ export default function Home() {
             Why Choose Us?
           </h2>
           <p className="text-sm md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
-            Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its operational data.
-            This is referred to as Location Master Data Management and allows your organization, right from the get go, to manage your portfolio beyond the table.
-            In 2025 and beyond you should not have to work with and pay for bloated software and data solutions. Get a solution custom tailored for your organization at a fraction of the cost.
+            Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its data.
+            This is referred to as Location Master Data Management and allows your organization, right from the get go, to manage your portfolio with a complete understanding of where your business is and what is around it.
+            Stop paying for bloated software and data solutions. Get a location intelligence solution custom tailored for your organization at a fraction of the cost.
           </p>
         </section>
       </main>
