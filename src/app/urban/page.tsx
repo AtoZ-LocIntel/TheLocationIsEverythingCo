@@ -17,7 +17,18 @@ export default function UrbanInsightsPage() {
         Urban Insights Data Suite
       </h1>
       <p className="text-lg mb-8 text-center max-w-2xl">
-        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. Stay tuned for our initial release of Infrastructure Health Index for Neighborhoods
+        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. We are excited about our first release of our --Infrastructure Health Index for Neighborhoods-- where we create a relativity index for neighborhoods taking into consideration (into a single view):
+
+ -- Abandonment/Blight
+ -- Environmental Hazard
+-- Other
+ -- Power/Lighting Reliability
+ -- Roadway Condition
+ -- Sanitation & Health
+ --  Structural/Building Safety
+ -- Traffic/Signage/Safety
+ -- Vegetation/Tree/Storm
+ -- Water Infrastructure
       </p>
       {/* You can add a sample image here if you have one, or a placeholder: */}
           <img src="/logo.png" alt="Location Is Everything Logo" style={{ width: '250px', height: '250px', marginLeft: '10px', border: '2px solid white', borderRadius: '50%', backgroundColor: 'white', objectFit: 'contain' }} />
