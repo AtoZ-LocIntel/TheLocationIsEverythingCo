@@ -19,7 +19,6 @@ const barlowCondensed = Barlow_Condensed({
 
 // Popup content for each POI (edit or expand as needed!)
 const POI_CONTENT = [
-  // ... your POI_CONTENT as before ...
   {
     title: "Open Tools, Code and Data Approach",
     body: (
@@ -35,18 +34,17 @@ const POI_CONTENT = [
       <>
         <strong></strong>Specifically tailored for the automotive insurance industry and leveraging our innovative data capture methods we have aggregated animal to vehicle impact data on roadways and zipcodes in select states.
       <br />
-        <Image
+	      <Image
           src="/ca_crospts_zips_sample_4_good.png"
           alt="Sample Animal-Vehicle Collision Data"
           width={640}
           height={540}
           className="mt-4 rounded-lg shadow-lg mx-auto"
         />
-    </>
+		</>
     ),
     ring: "ring-green-300"
   },
-  // ...rest of POI_CONTENT...
   {
     title: "Affordable Location Intelligence Solutions",
     body: (
@@ -79,13 +77,13 @@ const POI_CONTENT = [
     body: (
       <>
         <strong></strong> Insurance/
-    RealEstate/
-    Finance/
-    Retail/
-    Healthcare/
-    Manufacturing/
-    Energy/
-    Technology
+		RealEstate/
+		Finance/
+		Retail/
+		Healthcare/
+		Manufacturing/
+		Energy/
+		Technology
       </>
     ),
     ring: "ring-yellow-300"
@@ -113,7 +111,6 @@ const POI_CONTENT = [
 export default function Home() {
   const [showOfferings, setShowOfferings] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
-  const [showPhone, setShowPhone] = useState(false); // <-- ADD THIS LINE
   const [form, setForm] = useState({
     name: "",
     organization: "",
@@ -206,26 +203,6 @@ export default function Home() {
               {POI_CONTENT[activePOI].title}
             </h2>
             <div className="text-base md:text-lg">{POI_CONTENT[activePOI].body}</div>
-          </div>
-        </div>
-      )}
-
-      {/* --- PHONE MODAL --- */}
-      {showPhone && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-2">
-          <div className="relative bg-gray-900 bg-opacity-95 rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-2 flex flex-col items-center">
-            <button
-              onClick={() => setShowPhone(false)}
-              className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl"
-              aria-label="Close Phone Modal"
-            >
-              &times;
-            </button>
-            <h2 className="text-2xl font-bold text-white mb-4">Call Us</h2>
-            <div className="text-2xl text-blue-400 font-bold tracking-wide mb-2">
-              <a href="tel:16037220669" className="hover:underline">1.603.722.0669</a>
-            </div>
-            <p className="text-gray-200 text-base text-center">We're happy to talk!</p>
           </div>
         </div>
       )}
@@ -329,46 +306,47 @@ export default function Home() {
       )}
 
       {/* Top-right menu */}
-      <header className="fixed top-0 right-0 z-30 px-4 md:px-8 py-2 md:py-4">
-        <nav className="flex gap-4 md:gap-8 items-center justify-end">
-          <button
-            onClick={() => setShowOfferings(true)}
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            Offerings
-          </button>
-          <a
-            href="/avi"
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            Animal-Vehicle Impacts (AVI)
-          </a>
-          <a
-            href="/urban"
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            Urban Insights Data Suite
-          </a>
-          <a
-            href="#about"
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            About
-          </a>
-          <button
-            onClick={() => setShowPhone(true)}
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            Contact Us by Phone
-          </button>
-          <a
-            href="mailto:questions@thelocationiseverythingco.com"
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            Contact Us by Email
-          </a>
-        </nav>
-      </header>
+<header className="fixed top-0 right-0 z-30 px-4 md:px-8 py-2 md:py-4">
+  <nav className="flex gap-4 md:gap-8 items-center justify-end">
+    <button
+      onClick={() => setShowOfferings(true)}
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      Offerings
+    </button>
+    <a
+      href="/avi"
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      Animal-Vehicle Impacts (AVI)
+    </a>
+    <a
+      href="/urban"
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      Urban Insights Data Suite
+    </a>
+    <a
+      href="#about"
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      About
+    </a>
+    <button
+      onClick={() => setShowPhone(true)}
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      Contact Us by Phone
+    </button>
+    <a
+      href="mailto:questions@thelocationiseverythingco.com"
+      className="hover:text-blue-400 transition text-white text-base md:text-lg"
+    >
+      Contact Us by Email
+    </a>
+  </nav>
+</header>
+
 
       {/* Main Centered Content */}
       <main className="relative z-20 flex flex-col justify-center items-center w-full px-2">
@@ -384,10 +362,10 @@ export default function Home() {
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
             Get full-featured location intelligence geospatial tools and data that you need without the vendor commitment.
-      </p>
-      <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
-      Click on the poi icons to learn more!
-      </p>
+			</p>
+		  <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+		  Click on the poi icons to learn more!
+		  </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
           <button
             onClick={() => setShowContactForm(true)}
