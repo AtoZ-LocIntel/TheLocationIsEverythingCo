@@ -225,7 +225,7 @@ export default function Home() {
             <div className="text-2xl text-blue-400 font-bold tracking-wide mb-2">
               <a href="tel:16037220669" className="hover:underline">1.603.722.0669</a>
             </div>
-            <p className="text-gray-200 text-base text-center">We're happy to talk!</p>
+            <p className="text-gray-200 text-base text-center">We are happy to talk!</p>
           </div>
         </div>
       )}
