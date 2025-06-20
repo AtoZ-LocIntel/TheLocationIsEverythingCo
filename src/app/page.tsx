@@ -349,12 +349,6 @@ export default function Home() {
           >
             Urban Insights Data Suite
           </a>
-          <a
-            href="#about"
-            className="hover:text-blue-400 transition text-white text-base md:text-lg"
-          >
-            About
-          </a>
           <button
             onClick={() => setShowPhone(true)}
             className="hover:text-blue-400 transition text-white text-base md:text-lg"
