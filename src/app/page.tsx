@@ -254,6 +254,9 @@ export default function Home() {
                 </li>
                 <li>
                   <b>Differentiating Data Products</b>With a focus on the insurance industry stay tuned for: Animal-Vehicle Impact Products and our Urban Insights Data Suite!
+				    </li>
+                <li>
+				   <b>Making Sense of your BIG DATA</b>   We know how challenging it is to get insights out of your big data, we have a passion for and specialize in turning big messy data into location intelligence data products!
                 </li>
               </ul>
             </div>
@@ -363,12 +366,13 @@ export default function Home() {
           </a>
         </nav>
       </header>
+	 
 
       {/* Main Centered Content */}
       <main className="relative z-20 flex flex-col justify-center items-center w-full px-2">
         <section className="flex flex-col items-center justify-center text-center w-full max-w-4xl px-2 py-4 mt-10 md:mt-20 mb-10 md:mb-20">
           <h1 className={
-            `${barlowCondensed.className} text-2xl md:text-6xl font-extrabold italic mb-4 md:mb-5
+            `${barlowCondensed.className} text-2xl md:text-8xl font-extrabold italic mb-4 md:mb-5
             bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight leading-tight md:leading-[1.1] overflow-visible drop-shadow-lg`
           }>
             Location Intelligence <span className="block md:inline">Freedom</span>
