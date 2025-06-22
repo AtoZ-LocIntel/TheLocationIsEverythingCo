@@ -356,7 +356,7 @@ export default function Home() {
             Contact Us by Phone
           </button>
           <a
-            href="mailto:questions@thelocationiseverythingco.com"
+            href="mailto:questions@locationiseverythingco.com"
             className="hover:text-blue-400 transition text-white text-base md:text-lg"
           >
             Contact Us by Email
