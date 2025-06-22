@@ -405,9 +405,10 @@ export default function Home() {
           <h2 className="text-xl md:text-5xl font-bold mb-2 md:mb-3 white-outline-black drop-shadow-lg">
             Why Choose Us?
           </h2>
-          <p className="text-sm md:text-xl text-white max-w-2xl mx-auto drop-shadow-lg font-bold">
-            Here at The Location Is Everything Company we believe that location is everything and should be the foundation in which your business organizes and manages its data.
-            This is referred to as Location Master Data Management and allows your organization, right from the get go, to manage your portfolio with a complete understanding of where your business is and what is around it.
+          <p className="text-sm md:text-lg text-white max-w-5xl mx-auto drop-shadow-lg font-bold">
+            This is simple, we love building cool spatial data products that are uncommon and insightful.  We also love to prove that you DO NOT need those big mapping and location intelligence
+            vendors	and build really cool location intelligence tools targeted for the insight you need.  We also believe that location should be the foundation in which your business organizes and manages its data.
+            This is referred to as Location Master Data Management and allows your organization, right from the get go, to manage your portfolio with real intelligence, imagine Google maps but targeted for your organization!
             Stop paying for bloated software and data solutions. Get a location intelligence solution custom tailored for your organization at a fraction of the cost.
           </p>
         </section>
