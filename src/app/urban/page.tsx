@@ -17,7 +17,7 @@ export default function UrbanInsightsPage() {
         Urban Insights Data Suite
       </h1>
       <p className="text-lg mb-8 text-center max-w-2xl">
-        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. We are excited about our first release of our --Infrastructure Health Index for Neighborhoods-- where we create a relativity index for neighborhoods taking into consideration (into a single view):
+        Our Urban Insights Data Suite delivers actionable neighborhood-level intelligence for the largest US cities, built from 311 service calls and more. We are excited about the first release of our --Infrastructure Health Index built for Census Blockgroups and Neighborhoods-- where we create a relativity index for neighborhoods taking into consideration (into a single view):
 
  -- Abandonment/Blight
  -- Environmental Hazard
