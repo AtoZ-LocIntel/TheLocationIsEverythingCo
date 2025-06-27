@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "https://placesnearme.locationiseverythingco.com/(.*)",
-      "destination": "https://YOUR-REPLIT-APP-URL.replit.app/$1",
+      "destination": "https://ai-travel-companion-mvp.replit.app/$1",
       "permanent": false
     }
   ]
