@@ -405,7 +405,7 @@ export default function Home() {
     rel="noopener noreferrer"
     className="text-blue-300 underline hover:text-blue-100"
   >
-    chownearby.com
+    placerby.com
   </a>{" "}
   — Location Intelligence in real-time and on-demand. This retrieves poi data from OSM and Overture!
 </p>
