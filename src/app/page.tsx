@@ -395,7 +395,7 @@ export default function Home() {
   >
     pdffriend.com
   </a>{" "}
-  — Create instant websites from cool PDFs. We will be expanding on this to include connectivity to GitHub, Netlify, and more. Future enhancements include the ability to make your PDF ADA Compliant,
+  — Business Intelligence! Create instant websites from cool PDFs. We will be expanding on this to include connectivity to GitHub, Netlify, and more. Future enhancements include the ability to make your PDF ADA Compliant,
   Auto-Linker to instantly improve usability by hyperlinking anything that looks like a URL, email, or phone number. Helps people interact with PDFs without needing to copy/paste!, and more, its your PDF Friend!
 </p>
 <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
