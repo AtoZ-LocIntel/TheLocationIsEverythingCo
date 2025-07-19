@@ -381,11 +381,39 @@ export default function Home() {
             Break free from big vendor lock-in and big hit to your pocket, keep the insights!
           </p>
           <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
-            Get full-featured location intelligence geospatial tools and data that you need without the vendor commitment.
-      </p>
-      <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
-      Click on the poi icons to learn more!
-      </p>
+            Get full-featured location and business intelligence tools and data that you need without the vendor commitment.
+			</p>
+	      <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+            Checkout some free to use services!
+			</p>
+	    <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+  <a
+    href="https://pdffriend.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-300 underline hover:text-blue-100"
+  >
+    pdffriend.com
+  </a>{" "}
+  — Create instant websites from cool PDFs. We will be expanding on this to include connectivity to GitHub, Netlify, and more. Future enhancements include the ability to make your PDF ADA Compliant,
+  Auto-Linker to instantly improve usability by hyperlinking anything that looks like a URL, email, or phone number. Helps people interact with PDFs without needing to copy/paste!, and more, its your PDF Friend!
+</p>
+
+<p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+  <a
+    href="https://chownearby.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-300 underline hover:text-blue-100"
+  >
+    chownearby.com
+  </a>{" "}
+  — Location Intelligence in real-time and on-demand. This retrieves food/restaurant data from OSM and Overture!
+</p>
+
+          <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+          Click on the poi icons to learn more!
+          </p>
           {/* Why Choose Us Section with Interactive Circular Logo */}
           <button
             onClick={() => setShowContactForm(true)}
