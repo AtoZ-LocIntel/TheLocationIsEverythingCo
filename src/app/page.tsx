@@ -398,6 +398,17 @@ export default function Home() {
   — Create instant websites from cool PDFs. We will be expanding on this to include connectivity to GitHub, Netlify, and more. Future enhancements include the ability to make your PDF ADA Compliant,
   Auto-Linker to instantly improve usability by hyperlinking anything that looks like a URL, email, or phone number. Helps people interact with PDFs without needing to copy/paste!, and more, its your PDF Friend!
 </p>
+<p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
+  <a
+    href="https://placerby.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-300 underline hover:text-blue-100"
+  >
+    chownearby.com
+  </a>{" "}
+  — Location Intelligence in real-time and on-demand. This retrieves poi data from OSM and Overture!
+</p>
 
 <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-6 max-w-3xl drop-shadow-lg">
   <a
