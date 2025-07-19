@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "https://placesnearme.locationiseverythingco.com/(.*)",
-      "destination": "https://ai-travel-companion-mvp.replit.app/$1",
-      "permanent": false
-    }
-  ]
-}
