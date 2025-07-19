@@ -375,7 +375,7 @@ export default function Home() {
             `${barlowCondensed.className} text-2xl md:text-8xl font-extrabold italic mb-4 md:mb-5
             bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight leading-tight md:leading-[1.1] overflow-visible drop-shadow-lg`
           }>
-            Location Intelligence <span className="block md:inline">Freedom</span>
+            Location and Business Intelligence <span className="block md:inline">Freedom</span>
           </h1>
           <p className="text-base md:text-3xl font-light mb-2 md:mb-4 max-w-3xl text-white drop-shadow-lg">
             Break free from big vendor lock-in and big hit to your pocket, keep the insights!
